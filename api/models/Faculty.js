@@ -9,16 +9,15 @@ module.exports = {
 
   attributes: {
 
-    description: {
+    name: {
       type: 'string',
-      columnName: 'description',
-      columnType: 'character varying(50)',
-      maxLength: 50,
+      columnType: 'character varying(75)',
+      maxLength: 75,
     },
 
-    smallDescription: {
+    smallName: {
       type: 'string',
-      columnName: 'small_description',
+      columnName: 'small_name',
       columnType: 'character varying(15)',
       maxLength: 15,
     }

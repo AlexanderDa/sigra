@@ -10,17 +10,17 @@ module.exports = {
   attributes: {
 
 
-    description: {
+    name: {
       type: 'string',
-      columnType: 'character varying(40)',
-      maxLength: 40,
+      columnType: 'character varying(75)',
+      maxLength: 75,
     },
 
-    smallDescription: {
+    smallName: {
       type: 'string',
       columnType: 'character varying(10)',
       maxLength: 10,
-      columnName: 'small_description'
+      columnName: 'small_name'
     },
 
     address: { type: 'string' },
@@ -39,7 +39,11 @@ module.exports = {
       isEmail: true
     },
 
-    contact: { type: 'string' },
+    contact: {
+      type: 'string',
+      columnType: 'character varying(75)',
+      maxLength: 75,
+    },
 
     isPrivate: {
       type: 'boolean',

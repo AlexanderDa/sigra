@@ -13,26 +13,31 @@ module.exports = {
     careerStartDate: {
       type: 'ref',
       columnType: 'date',
+      columnName: 'career_start_date'
     },
 
     careerFinishDate: {
       type: 'ref',
       columnType: 'date',
+      columnName: 'career_finish_date'
     },
 
     graduationDate: {
       type: 'ref',
       columnType: 'date',
+      columnName: 'career_graduation_date'
     },
 
     gradeScore: {
       type: 'number',
-      columnType: 'real'
+      columnType: 'real',
+      columnName: 'grade_score'
     },
 
     senescytRecord: {
       type: 'string',
       unique: true,
+      columnName: 'senecyt_record',
       columnType: 'character varying(25)',
       maxLength: 25,
     },

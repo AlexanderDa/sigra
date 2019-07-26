@@ -9,7 +9,11 @@ module.exports = {
 
   attributes: {
 
-    description: { type: 'string' }
+    name: {
+      type: 'string',
+      columnType: 'character varying(150)',
+      maxLength: 150,
+    }
 
   },
 

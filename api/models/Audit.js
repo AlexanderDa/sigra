@@ -13,7 +13,11 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    tableName: { type: 'string' },
+    tableName: {
+      type: 'string',
+      columnType: 'character varying(20)',
+      maxLength: 20,
+    },
 
     date: {
       type: 'ref',

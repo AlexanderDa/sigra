@@ -16,9 +16,9 @@ module.exports = {
       maxLength: 50,
     },
 
-    smallDescription: {
+    smallName: {
       type: 'string',
-      columnName: 'small_description',
+      columnName: 'small_name',
       columnType: 'character varying(10)',
       maxLength: 10,
     }
