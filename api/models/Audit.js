@@ -15,6 +15,7 @@ module.exports = {
 
     tableName: {
       type: 'string',
+      columnName: 'table_name',
       columnType: 'character varying(20)',
       maxLength: 20,
     },
@@ -22,19 +23,17 @@ module.exports = {
     date: {
       type: 'ref',
       columnType: 'timestamp',
-      defaultsTo: 'current_timestamp',
+      //defaultsTo: 'current_timestamp',
     },
 
-    acction: {
+    action: {
       type: 'string',
       columnType: 'character varying(15)',
       maxLength: 15,
     },
 
     description: {
-      type: 'string',
-      columnType: 'character varying(250)',
-      maxLength: 250,
+      type: 'string'
     },
 
     user: {
