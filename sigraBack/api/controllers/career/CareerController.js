@@ -8,7 +8,7 @@
 module.exports = {
 
     getAll: async function (req, res) {
-        let list = await Carrer.find();
+        let list = await Career.find();
         if (!list) {
             res.status = 500;
             res.send({ fetched: false })
@@ -33,7 +33,7 @@ module.exports = {
             res.status = 500;
             res.send({ updated: false })
         } else {
-            audit(req.headers.userid, 'Editar', JSON.stringify(updatedCarrer))
+            audit(req.headers.userid, 'Editar', JSON.stringify(updatedCareer))
             res.send({
                 updated: true,
                 updatedCareer
@@ -46,7 +46,7 @@ module.exports = {
             res.status = 500;
             res.send({ deleted: false })
         } else {
-            audit(req.headers.userid, 'Eliminar', JSON.stringify(deletedCarrer))
+            audit(req.headers.userid, 'Eliminar', JSON.stringify(deletedCareer))
             res.send({
                 deleted: true,
                 deletedCareer
@@ -58,7 +58,7 @@ module.exports = {
 
 async function audit(user, action, description) {
     await Audit.create({
-        tableName: 'Carrera',
+        tableName: 'Careera',
         date: new Date(),
         action,
         description,

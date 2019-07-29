@@ -22,9 +22,13 @@ export default new Router({
       component: () => import('@/views/main/main//MainView.vue'),
       children: [
         {
-          path: 'test',
-          name: 'TestPage',
-          component: () => import('@/views/main/test/TestView.vue'),
+          path: 'faculty',
+          name: 'FacultyPage',
+          component: () => import('@/views/main/faculty/FacultyView.vue'),
+        },{
+          path: 'career',
+          name: 'CareerPage',
+          component: () => import('@/views/main/career/CareerView.vue'),
         }
       ]
     }

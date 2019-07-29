@@ -23,7 +23,7 @@ module.exports = {
             res.status = 500;
             res.send({ saved: false })
         } else {
-            audit(req.me.id, 'Guardar', JSON.stringify(newFaculty))
+            audit(req.headers.userid, 'Guardar', JSON.stringify(newFaculty))
             res.send({ saved: true, newFaculty });
         }
     },
@@ -33,7 +33,7 @@ module.exports = {
             res.status = 500;
             res.send({ updated: false })
         } else {
-            audit(req.me.id, 'Editar', JSON.stringify(updatedFaculty))
+            audit(req.headers.userid, 'Editar', JSON.stringify(updatedFaculty))
             res.send({
                 updated: true,
                 updatedFaculty
@@ -46,7 +46,7 @@ module.exports = {
             res.status = 500;
             res.send({ deleted: false })
         } else {
-            audit(req.me.id, 'Eliminar', JSON.stringify(deletedFaculty))
+            audit(req.headers.userid, 'Eliminar', JSON.stringify(deletedFaculty))
             res.send({
                 deleted: true,
                 deletedFaculty

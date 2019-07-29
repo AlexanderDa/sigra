@@ -1,23 +1,26 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import TestService from '@/service/TestService';
+import FacultyService from '@/service/FacultyService';
 import swal from 'sweetalert'
 
 @Component({ name: 'MaiNView' })
-export default class TestView extends Vue {
+export default class FacultyView extends Vue {
   public dialog: boolean = false;
   public search: string = '';
   public headers: any[] = [
     { text: 'Nombre', align: 'left', value: 'name' },
+    { text: 'Nombre corto', align: 'left', value: 'smallName' },
     { text: 'Actions', value: 'action', sortable: false }
   ]
   public desserts: any = []
   public editedIndex: number = -1
   public editedItem: any = {
     name: '',
+    smallName: ''
   }
   public defaultItem: any = {
     name: '',
+    smallName: ''
   }
   public created(): void {
     this.initialize();
@@ -26,7 +29,7 @@ export default class TestView extends Vue {
   // Methods
 
   public initialize(): void {
-    const service: TestService = new TestService();
+    const service: FacultyService = new FacultyService();
     service.getAll()
       .then((res: any) => {
         this.desserts = res.data
@@ -54,7 +57,7 @@ export default class TestView extends Vue {
     swal(swalConf)
       .then((willDelete) => {
         if (willDelete) {
-          const service: TestService = new TestService();
+          const service: FacultyService = new FacultyService();
           service.remove(item.id)
             .then((res: any) => {
               if (res.data.deleted === true) {
@@ -74,11 +77,11 @@ export default class TestView extends Vue {
   }
 
   public save(): void {
-    const service: TestService = new TestService()
+    const service: FacultyService = new FacultyService()
     if (this.editedIndex > -1) {
       service.put(this.editedItem.id, this.editedItem)
         .then((res: any) => {
-          Object.assign(this.desserts[this.editedIndex], res.data.updatedTest)
+          Object.assign(this.desserts[this.editedIndex], res.data.updatedFaculty)
         })
         .catch((err: any) => {
           console.log(err)
@@ -86,7 +89,7 @@ export default class TestView extends Vue {
     } else {
       service.post(this.editedItem)
         .then((res: any) => {
-          this.desserts.push(res.data.newTest)
+          this.desserts.push(res.data.newFaculty)
         })
         .catch((err: any) => {
           console.log(err)
