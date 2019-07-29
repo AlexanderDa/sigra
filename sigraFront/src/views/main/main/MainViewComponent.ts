@@ -26,9 +26,13 @@ export default class MainView extends Vue {
     { icon: 'logout', title: 'Salir', routerName: 'LoginPage' }
   ];
 
-  public created (): void { }
+  public created(): void { }
 
-  public changeView (routerName: string): void {
+  public changeView(routerName: string): void {
+    if (routerName === 'LoginPage') {
+      localStorage.setItem('isLogged', 'false')
+      localStorage.removeItem('userId')
+    }
     this.$router.push({ name: routerName })
   }
 }

@@ -18,15 +18,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class RootView extends Vue {
-  private created (): void {
-    if (localStorage.logged === 'true') {
-      this.$router.push({ name: 'MainPage' })
+  private created(): void {
+    console.log(localStorage.isLogged);
+    if (localStorage.getItem("isLogged") === "true") {
+      this.$router.push({ name: "MainPage" });
     } else {
-      this.$router.push({ name: 'LoginPage' })
+      this.$router.push({ name: "LoginPage" });
     }
   }
 }

@@ -12,7 +12,7 @@ export default class LoginView extends Vue {
     const auth: UserService = new UserService()
     auth.login(this.username, this.password, true)
       .then(async (res: any) => {
-        await localStorage.setItem('islogged', 'true')
+        await localStorage.setItem('isLogged', 'true')
         await localStorage.setItem('userId', JSON.stringify(res.data.id))
         this.$router.push({ name: 'MainPage' })
       })
