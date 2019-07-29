@@ -19,7 +19,10 @@ export default new Router({
     {
       path: '/main',
       name: 'MainPage',
-      component: () => import('@/views/main/main//MainView.vue')
+      component: () => import('@/views/main/main//MainView.vue'),
+      children: [
+       
+      ]
     }
   ]
 })
