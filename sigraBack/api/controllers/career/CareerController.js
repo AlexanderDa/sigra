@@ -6,13 +6,24 @@
  */
 
 module.exports = {
+
+    getAll: async function (req, res) {
+        let list = await Carrer.find();
+        if (!list) {
+            res.status = 500;
+            res.send({ fetched: false })
+        } else {
+            res.send(list);
+        }
+    },
+
     createNewCareer: async function (req, res) {
         let newCareer = await Career.create(req.allParams()).fetch();
         if (!newCareer) {
             res.status = 500;
             res.send({ saved: false })
         } else {
-            audit(req.me.id, 'Guardar', JSON.stringify(newCareer))
+            audit(req.headers.userid, 'Guardar', JSON.stringify(newCareer))
             res.send({ saved: true, newCareer });
         }
     },
@@ -22,7 +33,7 @@ module.exports = {
             res.status = 500;
             res.send({ updated: false })
         } else {
-            audit(req.me.id, 'Editar', JSON.stringify(updatedCarrer))
+            audit(req.headers.userid, 'Editar', JSON.stringify(updatedCarrer))
             res.send({
                 updated: true,
                 updatedCareer
@@ -35,7 +46,7 @@ module.exports = {
             res.status = 500;
             res.send({ deleted: false })
         } else {
-            audit(req.me.id, 'Eliminar', JSON.stringify(deletedCarrer))
+            audit(req.headers.userid, 'Eliminar', JSON.stringify(deletedCarrer))
             res.send({
                 deleted: true,
                 deletedCareer

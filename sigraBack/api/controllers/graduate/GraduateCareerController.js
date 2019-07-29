@@ -6,14 +6,23 @@
  */
 
 module.exports = {
-
+    getAll: async function (req, res) {
+        let list = await GraduateCareer.find();
+        if (!list) {
+            res.status = 500;
+            res.send({ fetched: false })
+        } else {
+            res.send(list);
+        }
+    },
+    
     createNewGraduateCareer: async function (req, res) {
         let newGraduateCareer = await GraduateCareer.create(req.allParams()).fetch();
         if (!newGraduateCareer) {
             res.status = 500;
             res.send({ saved: false })
         } else {
-            audit(req.me.id, 'Guardar', JSON.stringify(newGraduateCareer))
+            audit(req.headers.userid, 'Guardar', JSON.stringify(newGraduateCareer))
             res.send({ saved: true, newGraduateCareer });
         }
     },
@@ -23,7 +32,7 @@ module.exports = {
             res.status = 500;
             res.send({ updated: false })
         } else {
-            audit(req.me.id, 'Editar', JSON.stringify(updatedGraduateCareer))
+            audit(req.headers.userid, 'Editar', JSON.stringify(updatedGraduateCareer))
             res.send({
                 updated: true,
                 updatedGraduateCareer
@@ -36,7 +45,7 @@ module.exports = {
             res.status = 500;
             res.send({ deleted: false })
         } else {
-            audit(req.me.id, 'Eliminar', JSON.stringify(deletedGraduateCareer))
+            audit(req.headers.userid, 'Eliminar', JSON.stringify(deletedGraduateCareer))
             res.send({
                 deleted: true,
                 deletedGraduateCareer

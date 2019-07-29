@@ -7,6 +7,15 @@
 
 module.exports = {
 
+    getAll: async function (req, res) {
+        let list = await JobApplication.find();
+        if (!list) {
+            res.status = 500;
+            res.send({ fetched: false })
+        } else {
+            res.send(list);
+        }
+    },
 
     createNewJobApplication: async function (req, res) {
         let newJobApplication = await JobApplication.create(req.allParams()).fetch();
@@ -14,7 +23,7 @@ module.exports = {
             res.status = 500;
             res.send({ saved: false })
         } else {
-            audit(req.me.id, 'Guardar', JSON.stringify(newJobApplication))
+            audit(req.headers.userid, 'Guardar', JSON.stringify(newJobApplication))
             res.send({ saved: true, newJobApplication });
         }
     },
@@ -24,7 +33,7 @@ module.exports = {
             res.status = 500;
             res.send({ updated: false })
         } else {
-            audit(req.me.id, 'Editar', JSON.stringify(updatedJobApplication))
+            audit(req.headers.userid, 'Editar', JSON.stringify(updatedJobApplication))
             res.send({
                 updated: true,
                 updatedJobApplication
@@ -37,7 +46,7 @@ module.exports = {
             res.status = 500;
             res.send({ deleted: false })
         } else {
-            audit(req.me.id, 'Eliminar', JSON.stringify(deletedJobApplication))
+            audit(req.headers.userid, 'Eliminar', JSON.stringify(deletedJobApplication))
             res.send({
                 deleted: true,
                 deletedJobApplication

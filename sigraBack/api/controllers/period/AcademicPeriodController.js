@@ -7,13 +7,23 @@
 
 module.exports = {
 
+    getAll: async function (req, res) {
+        let list = await AcademicPeriod.find();
+        if (!list) {
+            res.status = 500;
+            res.send({ fetched: false })
+        } else {
+            res.send(list);
+        }
+    },
+
     createNewAcademicPeriod: async function (req, res) {
         let newAcademicPeriod = await AcademicPeriod.create(req.allParams()).fetch();
         if (!newAcademicPeriod) {
             res.status = 500;
             res.send({ saved: false })
         } else {
-            audit(req.me.id, 'Guardar', JSON.stringify(newAcademicPeriod))
+            audit(req.headers.userid, 'Guardar', JSON.stringify(newAcademicPeriod))
             res.send({ saved: true, newAcademicPeriod });
         }
     },
@@ -23,7 +33,7 @@ module.exports = {
             res.status = 500;
             res.send({ updated: false })
         } else {
-            audit(req.me.id, 'Editar', JSON.stringify(updatedAcademicPeriod))
+            audit(req.headers.userid, 'Editar', JSON.stringify(updatedAcademicPeriod))
             res.send({
                 updated: true,
                 updatedAcademicPeriod
@@ -36,7 +46,7 @@ module.exports = {
             res.status = 500;
             res.send({ deleted: false })
         } else {
-            audit(req.me.id, 'Eliminar', JSON.stringify(deletedAcademicPeriod))
+            audit(req.headers.userid, 'Eliminar', JSON.stringify(deletedAcademicPeriod))
             res.send({
                 deleted: true,
                 deletedAcademicPeriod

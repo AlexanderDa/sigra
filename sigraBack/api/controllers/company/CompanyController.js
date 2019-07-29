@@ -6,6 +6,15 @@
  */
 
 module.exports = {
+    getAll: async function (req, res) {
+        let list = await Company.find();
+        if (!list) {
+            res.status = 500;
+            res.send({ fetched: false })
+        } else {
+            res.send(list);
+        }
+    },
 
     createNewCompany: async function (req, res) {
         let newCompany = await Company.create(req.allParams()).fetch();
@@ -13,7 +22,7 @@ module.exports = {
             res.status = 500;
             res.send({ saved: false })
         } else {
-            audit(req.me.id, 'Guardar', JSON.stringify(newCompany))
+            audit(req.headers.userid, 'Guardar', JSON.stringify(newCompany))
             res.send({ saved: true, newCompany });
         }
     },
@@ -23,7 +32,7 @@ module.exports = {
             res.status = 500;
             res.send({ updated: false })
         } else {
-            audit(req.me.id, 'Editar', JSON.stringify(updatedCompany))
+            audit(req.headers.userid, 'Editar', JSON.stringify(updatedCompany))
             res.send({
                 updated: true,
                 updatedCompany
@@ -36,7 +45,7 @@ module.exports = {
             res.status = 500;
             res.send({ deleted: false })
         } else {
-            audit(req.me.id, 'Eliminar', JSON.stringify(deletedCompany))
+            audit(req.headers.userid, 'Eliminar', JSON.stringify(deletedCompany))
             res.send({
                 deleted: true,
                 deletedCompany

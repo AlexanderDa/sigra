@@ -7,6 +7,15 @@
 
 module.exports = {
 
+    getAll: async function (req, res) {
+        let list = await Graduate.find();
+        if (!list) {
+            res.status = 500;
+            res.send({ fetched: false })
+        } else {
+            res.send(list);
+        }
+    },
 
     createNewGraduate: async function (req, res) {
         let newGraduate = await Graduate.create(req.allParams()).fetch();
@@ -14,7 +23,7 @@ module.exports = {
             res.status = 500;
             res.send({ saved: false })
         } else {
-            audit(req.me.id, 'Guardar', JSON.stringify(newGraduate))
+            audit(req.headers.userid, 'Guardar', JSON.stringify(newGraduate))
             res.send({ saved: true, newGraduate });
         }
     },
@@ -24,7 +33,7 @@ module.exports = {
             res.status = 500;
             res.send({ updated: false })
         } else {
-            audit(req.me.id, 'Editar', JSON.stringify(updatedGraduate))
+            audit(req.headers.userid, 'Editar', JSON.stringify(updatedGraduate))
             res.send({
                 updated: true,
                 updatedGraduate
@@ -37,7 +46,7 @@ module.exports = {
             res.status = 500;
             res.send({ deleted: false })
         } else {
-            audit(req.me.id, 'Eliminar', JSON.stringify(deletedGraduate))
+            audit(req.headers.userid, 'Eliminar', JSON.stringify(deletedGraduate))
             res.send({
                 deleted: true,
                 deletedGraduate
