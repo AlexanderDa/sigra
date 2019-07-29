@@ -12,7 +12,7 @@ module.exports = {
             res.status = 500;
             res.send({ saved: false })
         } else {
-            audit(req.me.id, 'Guardar', JSON.stringify(newCarrer))
+            audit(req.me.id, 'Guardar', JSON.stringify(newCareer))
             res.send({ saved: true, newCareer });
         }
     },
