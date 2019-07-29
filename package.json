@@ -10,7 +10,8 @@
     "install": "cd sigraBack && yarn install && cd ../sigraFront && yarn install && cd ..",
     "install:f": "cd sigraFront && yarn add ",
     "install:b": "cd sigraBack && yarn add",
-    "lint": "cd sigraFront && yarn lint && cd ../"
+    "lint": "cd sigraFront && yarn lint && cd ../",
+    "build": "cd sigraFront && yarn build && cd ../sigraBack && mkdir views && mv assets/index.html views/index.ejs "
   },
   "dependencies": {
     "ll": "^1.1.1"
