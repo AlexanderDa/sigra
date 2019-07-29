@@ -1,0 +1,18 @@
+{
+  "name": "sigra",
+  "version": "1.0.0",
+  "description": "Sistema de graduados",
+  "repository": "https://github.com/AlexanderDa/sigra.git",
+  "author": "Alexander Bonilla",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cd sigraBack && yarn dev & cd sigraFront && yarn serve",
+    "install": "cd sigraBack && yarn install && cd ../sigraFront && yarn install && cd ..",
+    "install:f": "cd sigraFront && yarn add ",
+    "install:b": "cd sigraBack && yarn add",
+    "lint": "cd sigraFront && yarn lint && cd ../"
+  },
+  "dependencies": {
+    "ll": "^1.1.1"
+  }
+}
