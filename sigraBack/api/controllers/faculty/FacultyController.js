@@ -7,6 +7,16 @@
 
 module.exports = {
 
+    getAll: async function (req, res) {
+        let list = await Faculty.find();
+        if (!list) {
+            res.status = 500;
+            res.send({ fetched: false })
+        } else {
+            res.send(list);
+        }
+    },
+
     createNewFaculty: async function (req, res) {
         let newFaculty = await Faculty.create(req.allParams()).fetch();
         if (!newFaculty) {
