@@ -21,7 +21,11 @@ export default new Router({
       name: 'MainPage',
       component: () => import('@/views/main/main//MainView.vue'),
       children: [
-       
+        {
+          path: 'career',
+          name: 'CareerPage',
+          component: () => import('@/views/main/career/CareerView.vue'),
+        }
       ]
     }
   ]

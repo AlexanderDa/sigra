@@ -18,7 +18,8 @@ interface Item {
 export default class MainView extends Vue {
   public drawer: boolean = true;
   public sideBarItems: Item[] = [
-    { icon: 'home', title: 'Principal', routerName: 'MainPage' }
+    { icon: 'home', title: 'Principal', routerName: 'MainPage' },
+    { icon: 'list', title: 'Carreras', routerName: 'CareerPage' }
   ];
 
   public optionItems: Item[] = [
