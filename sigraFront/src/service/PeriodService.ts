@@ -1,18 +1,18 @@
 import Service from '@/service/Service'
 import Axios from 'axios'
 
-export default class TestService extends Service {
+export default class PeriodService extends Service {
 
   public getAll() {
     return Axios.get(
-      `${this.url}/test`,
+      `${this.url}/period`,
       { headers: this.headers }
     )
   }
 
   public post(body: any) {
     return Axios.post(
-      `${this.url}/test`,
+      `${this.url}/period`,
       body,
       { headers: this.headers }
     )
@@ -20,7 +20,7 @@ export default class TestService extends Service {
 
   public put(id: number, body: any) {
     return Axios.put(
-      `${this.url}/test/${id}`,
+      `${this.url}/period/${id}`,
       body,
       { headers: this.headers }
     )
@@ -28,7 +28,7 @@ export default class TestService extends Service {
 
   public remove(id: number) {
     return Axios.delete(
-      `${this.url}/test/${id}`,
+      `${this.url}/period/${id}`,
       { headers: this.headers }
     )
   }

@@ -39,7 +39,7 @@ module.exports.routes = {
   'PUT        /api/v1/career/:id': { controller: 'career/CareerController', action: 'updateOneCareer' },
   'DELETE     /api/v1/career/:id': { controller: 'career/CareerController', action: 'deleteOneCareer' },
 
-
+  'GET        /api/v1/period':'period/AcademicPeriodController.getAll',
   'POST       /api/v1/period': { controller: 'period/AcademicPeriodController', action: 'createNewAcademicPeriod' },
   'PUT        /api/v1/period/:id': { controller: 'period/AcademicPeriodController', action: 'updateOneAcademicPeriod' },
   'DELETE     /api/v1/period/:id': { controller: 'period/AcademicPeriodController', action: 'deleteOneAcademicPeriod' },

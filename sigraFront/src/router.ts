@@ -22,9 +22,9 @@ export default new Router({
       component: () => import('@/views/main/main//MainView.vue'),
       children: [
         {
-          path: 'test',
-          name: 'TestPage',
-          component: () => import('@/views/main/test/TestView.vue'),
+          path: 'period',
+          name: 'PeriodPage',
+          component: () => import('@/views/main/period/PeriodView.vue'),
         }
       ]
     }

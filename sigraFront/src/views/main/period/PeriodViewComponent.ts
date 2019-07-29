@@ -1,23 +1,29 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import TestService from '@/service/TestService';
+import PeriodService from '@/service/PeriodService';
 import swal from 'sweetalert'
 
-@Component({ name: 'MaiNView' })
-export default class TestView extends Vue {
+@Component({ name: 'PeriodView' })
+export default class PeriodView extends Vue {
   public dialog: boolean = false;
   public search: string = '';
   public headers: any[] = [
-    { text: 'Nombre', align: 'left', value: 'name' },
+    { text: 'Fecha de Inicio', align: 'left', value: 'startDate' },
+    { text: 'Fecha de Cierre', align: 'left', value: 'finishDate' },
+    { text: 'Periodo', align: 'left', value: 'fullDate' },
     { text: 'Actions', value: 'action', sortable: false }
   ]
   public desserts: any = []
   public editedIndex: number = -1
   public editedItem: any = {
-    name: '',
+    startDate: '',
+    finishDate: '',
+    fullDate: '',
   }
   public defaultItem: any = {
-    name: '',
+    startDate: '',
+    finishDate: '',
+    fullDate: '',
   }
   public created(): void {
     this.initialize();
@@ -26,7 +32,7 @@ export default class TestView extends Vue {
   // Methods
 
   public initialize(): void {
-    const service: TestService = new TestService();
+    const service: PeriodService = new PeriodService();
     service.getAll()
       .then((res: any) => {
         this.desserts = res.data
@@ -54,7 +60,7 @@ export default class TestView extends Vue {
     swal(swalConf)
       .then((willDelete) => {
         if (willDelete) {
-          const service: TestService = new TestService();
+          const service: PeriodService = new PeriodService();
           service.remove(item.id)
             .then((res: any) => {
               if (res.data.deleted === true) {
@@ -74,11 +80,12 @@ export default class TestView extends Vue {
   }
 
   public save(): void {
-    const service: TestService = new TestService()
+    const service: PeriodService = new PeriodService()
     if (this.editedIndex > -1) {
       service.put(this.editedItem.id, this.editedItem)
         .then((res: any) => {
-          Object.assign(this.desserts[this.editedIndex], res.data.updatedTest)
+          Object.assign(this.desserts[this.editedIndex], res.data.updatedPeriod)
+          this.initialize()
         })
         .catch((err: any) => {
           console.log(err)
@@ -86,7 +93,7 @@ export default class TestView extends Vue {
     } else {
       service.post(this.editedItem)
         .then((res: any) => {
-          this.desserts.push(res.data.newTest)
+          this.desserts.push(res.data.newPeriod)
         })
         .catch((err: any) => {
           console.log(err)

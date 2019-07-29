@@ -19,7 +19,7 @@ export default class MainView extends Vue {
   public drawer: boolean = true;
   public sideBarItems: Item[] = [
     { icon: 'home', title: 'Principal', routerName: 'MainPage' },
-    { icon: 'list', title: 'Test', routerName: 'TestPage' }
+    { icon: 'list', title: 'Periodo Académico', routerName: 'PeriodPage' }
   ];
 
   public optionItems: Item[] = [

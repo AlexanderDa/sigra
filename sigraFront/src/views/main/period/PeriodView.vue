@@ -10,7 +10,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat color="white">
-          <v-toolbar-title>TEST</v-toolbar-title>
+          <v-toolbar-title>PERIODO ACADÉMICO</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
           <v-spacer></v-spacer>
           <v-text-field
@@ -44,8 +44,14 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 sm6 md4>
-                <v-text-field v-model="editedItem.name" label="Nombre"></v-text-field>
+              <v-flex xs12>
+                <v-text-field v-model="editedItem.startDate" label="Fecha de Inicio" :mask="'####-##-##'"></v-text-field>
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field v-model="editedItem.finishDate" label="Fecha de Cierre" :mask="'####-##-##'"></v-text-field>
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field v-model="editedItem.fullDate" label="Fecha Completa"></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
@@ -62,10 +68,10 @@
 </template>
 
 <script lang="ts">
-import TestView from "./TestViewComponent";
-export default TestView;
+import PeriodView from "./PeriodViewComponent";
+export default PeriodView;
 </script>
 
 <style lang="sass">
-    @import "./TestView.sass";
+    @import "./PeriodView.sass";
 </style>
