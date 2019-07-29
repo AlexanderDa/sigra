@@ -18,7 +18,7 @@ interface Item {
 export default class MainView extends Vue {
   public drawer: boolean = true;
   public sideBarItems: Item[] = [
-    { icon: 'home', title: 'Principal', routerName: 'MainPage' },
+    { icon: 'home', title: 'Principal', routerName: 'MainPage' }
   ];
 
   public optionItems: Item[] = [
@@ -26,10 +26,9 @@ export default class MainView extends Vue {
     { icon: 'logout', title: 'Salir', routerName: 'LoginPage' }
   ];
 
-  public created(): void { }
+  public created (): void { }
 
-  public changeView(routerName: string): void {
+  public changeView (routerName: string): void {
     this.$router.push({ name: routerName })
   }
-
 }
