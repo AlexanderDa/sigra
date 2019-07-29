@@ -29,6 +29,11 @@ export default new Router({
           path: 'career',
           name: 'CareerPage',
           component: () => import('@/views/main/career/CareerView.vue'),
+        },
+        {
+          path: 'period',
+          name: 'PeriodPage',
+          component: () => import('@/views/main/period/PeriodView.vue'),
         }
       ]
     }

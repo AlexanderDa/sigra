@@ -13,6 +13,13 @@ module.exports = {
             res.status = 500;
             res.send({ fetched: false })
         } else {
+            for (i = 0; i < list.length; i++) {
+                let date = new Date(list[i].startDate)
+                list[i].startDate = `${date.getFullYear()}-${formatNumber(date.getMonth() + 1)}-${formatNumber(date.getDate())} `
+                date = new Date(list[i].finishDate)
+                list[i].finishDate = `${date.getFullYear()}-${formatNumber(date.getMonth() + 1)}-${formatNumber(date.getDate())} `
+            }
+
             res.send(list);
         }
     },
@@ -64,4 +71,9 @@ async function audit(user, action, description) {
         description,
         user
     }).fetch();
+}
+
+
+function formatNumber(number) {
+    return (number >= 0 && number < 10) ? `0${number}` : `${number}`
 }

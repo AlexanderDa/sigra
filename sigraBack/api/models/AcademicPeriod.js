@@ -25,8 +25,8 @@ module.exports = {
     fullDate: {
       type: 'string',
       columnName: 'full_date',
-      columnType: 'character varying(25)',
-      maxLength: 25,
+      columnType: 'character varying(50)',
+      maxLength: 50,
     }
   },
   attended: { //asisten

@@ -20,7 +20,8 @@ export default class MainView extends Vue {
   public sideBarItems: Item[] = [
     { icon: 'home', title: 'Principal', routerName: 'MainPage' },
     { icon: 'list', title: 'Facultades', routerName: 'FacultyPage' },
-    { icon: 'list', title: 'Carreras', routerName: 'CareerPage' }
+    { icon: 'list', title: 'Carreras', routerName: 'CareerPage' },
+    { icon: 'list', title: 'Periodo Académico', routerName: 'PeriodPage' }
   ];
 
   public optionItems: Item[] = [
