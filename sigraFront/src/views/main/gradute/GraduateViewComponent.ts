@@ -26,6 +26,7 @@ export default class GraduateView extends Vue {
   // Methods
 
   public initialize (): void {
+    this.$store.commit('loaderStart')
     const service: GraduateService = new GraduateService()
     service.getAll()
       .then((res: any) => {
@@ -34,6 +35,7 @@ export default class GraduateView extends Vue {
       .catch((err: any) => {
         console.log(err)
       })
+      .finally(() => { this.$store.commit('loaderFinish') })
   }
   public editItem (item: any): void {
     this.editedIndex = this.desserts.indexOf(item)

@@ -30,6 +30,7 @@ export default class CareerView extends Vue {
 
   public initialize (): void {
     const service: CareerService = new CareerService()
+    this.$store.commit('loaderStart')
     service.getAll()
       .then((res: any) => {
         this.desserts = res.data
@@ -38,6 +39,7 @@ export default class CareerView extends Vue {
       .catch((err: any) => {
         console.log(err)
       })
+      .finally(() => { this.$store.commit('loaderFinish') })
   }
   public editItem (item: any): void {
     this.editedIndex = this.desserts.indexOf(item)

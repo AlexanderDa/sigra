@@ -19,8 +19,10 @@
       </v-navigation-drawer>
 
       <v-app-bar app color="primary" dark clipped-left>
-        <img src="@/assets/logo.svg" width="50px"/>
-        <v-btn icon @click="drawer=!drawer"> <v-icon>menu</v-icon> </v-btn>
+        <img src="@/assets/logo.svg" width="50px" />
+        <v-btn icon @click="drawer=!drawer">
+          <v-icon>menu</v-icon>
+        </v-btn>
         <v-toolbar-title>Sigra</v-toolbar-title>
 
         <v-spacer></v-spacer>
@@ -50,6 +52,7 @@
       </v-app-bar>
 
       <v-content>
+        <v-progress-linear v-if="$store.state.loader" indeterminate color="primary"></v-progress-linear>
         <router-view tag="v-container" fluid fill-height></router-view>
       </v-content>
     </v-app>
@@ -57,8 +60,8 @@
 </template>
 
 <script lang="ts">
-import MainView from './MainViewComponent'
-export default MainView
+import MainView from "./MainViewComponent";
+export default MainView;
 </script>
 
 <style lang="sass">

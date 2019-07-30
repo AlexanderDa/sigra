@@ -27,14 +27,15 @@ export default class PeriodView extends Vue {
     finishDate: '',
     fullDate: ''
   }
-  public created (): void {
+  public created(): void {
     this.initialize()
   }
 
   // Methods
 
-  public initialize (): void {
+  public initialize(): void {
     const service: PeriodService = new PeriodService()
+    this.$store.commit('loaderStart')
     service.getAll()
       .then((res: any) => {
         this.desserts = res.data
@@ -42,14 +43,15 @@ export default class PeriodView extends Vue {
       .catch((err: any) => {
         console.log(err)
       })
+      .finally(() => { this.$store.commit('loaderFinish') })
   }
-  public editItem (item: any): void {
+  public editItem(item: any): void {
     this.editedIndex = this.desserts.indexOf(item)
     this.editedItem = Object.assign({}, item)
     this.dialog = true
   }
 
-  public deleteItem (item: any): void {
+  public deleteItem(item: any): void {
     const index = this.desserts.indexOf(item)
     const swalConf: any = {
       title: '¿Estás seguro?',
@@ -72,7 +74,7 @@ export default class PeriodView extends Vue {
       })
   }
 
-  public close (): void {
+  public close(): void {
     this.dialog = false
     setTimeout(() => {
       this.editedItem = Object.assign({}, this.defaultItem)
@@ -80,7 +82,7 @@ export default class PeriodView extends Vue {
     }, 300)
   }
 
-  public save (): void {
+  public save(): void {
     const service: PeriodService = new PeriodService()
     if (this.editedIndex > -1) {
       service.put(this.editedItem.id, this.editedItem)
@@ -104,17 +106,17 @@ export default class PeriodView extends Vue {
   }
 
   // Computed
-  public get formTitle (): string {
+  public get formTitle(): string {
     return this.editedIndex === -1 ? 'Nuevo' : 'Editar'
   }
 
   // Watch
   @Watch('editedItem.startDate')
-  public onStartDateChange () { this.fullDateFormat() }
+  public onStartDateChange() { this.fullDateFormat() }
   @Watch('editedItem.finishDate')
-  public ooFinishDateChange () { this.fullDateFormat() }
+  public ooFinishDateChange() { this.fullDateFormat() }
 
-  public fullDateFormat () {
+  public fullDateFormat() {
     let date: string = ''
 
     date = `${this.getMonth(Number(this.editedItem.startDate.substring(5, 7)))} ${this.editedItem.startDate.substring(0, 4)}`
@@ -128,7 +130,7 @@ export default class PeriodView extends Vue {
     this.editedItem.fullDate = date
   }
 
-  private getMonth (value: number): string {
+  private getMonth(value: number): string {
     let month: string = ''
     switch (value) {
       case 1: month = 'ENERO'; break

@@ -27,6 +27,7 @@ export default class AreaView extends Vue {
 
   public initialize(): void {
     const service: AreaService = new AreaService();
+    this.$store.commit('loaderStart')
     service.getAll()
       .then((res: any) => {
         this.desserts = res.data
@@ -34,6 +35,7 @@ export default class AreaView extends Vue {
       .catch((err: any) => {
         console.log(err)
       })
+      .finally(() => { this.$store.commit('loaderFinish') })
 
   }
   public editItem(item: any): void {
