@@ -21,7 +21,8 @@ export default class MainView extends Vue {
     { icon: 'home', title: 'Principal', routerName: 'MainPage' },
     { icon: 'school', title: 'Universidad', routerName: 'UniversityPage' },
     { icon: 'person', title: 'Graduados', routerName: 'GraduatePage' },
-    { icon: 'how_to_reg', title: 'Egresados', routerName: 'GraduateCarrerPage' }
+    { icon: 'how_to_reg', title: 'Egresados', routerName: 'GraduateCarrerPage' },
+    { icon: 'account_balance', title: 'Empresa', routerName: 'EnterprisePage' }
 
   ];
 

@@ -52,7 +52,7 @@ module.exports.routes = {
   'DELETE     /api/v1/area/:id': { controller: 'area/AreaController', action: 'deleteOneArea' },
 
 
-  'GET        /api/v1/faculty': 'faculty/FacultyController.getAll',
+  'GET        /api/v1/company': 'company/CompanyController.getAll',
   'POST       /api/v1/company': { controller: 'company/CompanyController', action: 'createNewCompany' },
   'PUT        /api/v1/company/:id': { controller: 'company/CompanyController', action: 'updateOneCompany' },
   'DELETE     /api/v1/company/:id': { controller: 'company/CompanyController', action: 'deleteOneCompany' },

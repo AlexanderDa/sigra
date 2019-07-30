@@ -41,6 +41,11 @@ export default new Router({
           path: 'graduared',
           name: 'GraduateCarrerPage',
           component: () => import('@/views/main/graduated/GraduateCarrerView.vue')
+        },
+        {
+          path: 'enterprise',
+          name: 'EnterprisePage',
+          component: () => import('@/views/main/enterprise/EnterpriseView.vue')
         }
       ]
     }
