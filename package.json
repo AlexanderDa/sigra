@@ -7,9 +7,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "cd sigraBack && yarn dev & cd sigraFront && yarn serve",
-    "install": "cd sigraBack && yarn install && cd ../sigraFront && yarn install && cd ..",
-    "install:f": "cd sigraFront && yarn add ",
-    "install:b": "cd sigraBack && yarn add",
+    "install:a": "cd sigraBack && yarn install && cd ../sigraFront && yarn install && cd ..",
+    "install:f": "cd sigraFront && yarn install",
+    "install:b": "cd sigraBack && yarn install",
+    "add:f": "cd sigraFront && yarn add ",
+    "add:b": "cd sigraBack && yarn add",
     "lint": "cd sigraFront && yarn lint && cd ../",
     "build": "cd sigraFront && yarn build && cd ../sigraBack && mkdir views && mv assets/index.html views/index.ejs "
   },
