@@ -8,7 +8,15 @@ import PeriodService from '@/service/PeriodService'
 import CareerService from '@/service/CareerService'
 import GraduateService from '@/service/GraduateService'
 
-@Component({ name: 'GraduateCarrerView', components: { DateWidget: DateWidget } })
+import GraduateReport from '@/components/widget/report/GraduateReportWidget.vue'
+
+@Component({
+  name: 'GraduateCarrerView',
+  components: {
+    DateWidget,
+    GraduateReport
+  }
+})
 export default class GraduateCarrerView extends Vue {
   public dialog: boolean = false;
   public search: string = '';

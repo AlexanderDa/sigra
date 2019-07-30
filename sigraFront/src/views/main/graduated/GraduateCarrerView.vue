@@ -23,6 +23,7 @@
             hide-details
           ></v-text-field>
           <v-spacer></v-spacer>
+          <GraduateReport :faculties="faculties" :careers="careers" :graduates="desserts" />
           <v-btn color="primary" dark icon @click="dialog=!dialog">
             <v-icon>add</v-icon>
           </v-btn>
