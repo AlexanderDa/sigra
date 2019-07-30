@@ -19,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import UniversityView from "./UniversityViewComponent";
-export default UniversityView;
+import UniversityView from './UniversityViewComponent'
+export default UniversityView
 </script>
 
 <style lang="sass">

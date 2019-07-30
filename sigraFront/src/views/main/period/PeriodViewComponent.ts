@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { Watch } from 'vue-property-decorator'
 import PeriodService from '@/service/PeriodService'
 import swal from 'sweetalert'
-
-@Component({ name: 'PeriodView' })
+import DateWidget from '@/components/widget/date/DateWidget.vue'
+@Component({ name: 'PeriodView', components: { DateWidget } })
 export default class PeriodView extends Vue {
   public dialog: boolean = false;
   public search: string = '';
@@ -105,5 +106,44 @@ export default class PeriodView extends Vue {
   // Computed
   public get formTitle (): string {
     return this.editedIndex === -1 ? 'Nuevo' : 'Editar'
+  }
+
+  // Watch
+  @Watch('editedItem.startDate')
+  public onStartDateChange () { this.fullDateFormat() }
+  @Watch('editedItem.finishDate')
+  public ooFinishDateChange () { this.fullDateFormat() }
+
+  public fullDateFormat () {
+    let date: string = ''
+
+    date = `${this.getMonth(Number(this.editedItem.startDate.substring(5, 7)))} ${this.editedItem.startDate.substring(0, 4)}`
+
+    date = (this.editedItem.startDate !== '' && this.editedItem.finishDate !== '')
+      ? `${date} - `
+      : date
+
+    date = date + `${this.getMonth(Number(this.editedItem.finishDate.substring(5, 7)))} ${this.editedItem.finishDate.substring(0, 4)}`
+
+    this.editedItem.fullDate = date
+  }
+
+  private getMonth (value: number): string {
+    let month: string = ''
+    switch (value) {
+      case 1: month = 'ENERO'; break
+      case 2: month = 'FEBRERO'; break
+      case 3: month = 'MARZO'; break
+      case 4: month = 'ABRIL'; break
+      case 5: month = 'MAYO'; break
+      case 6: month = 'JUNIO'; break
+      case 7: month = 'JULIO'; break
+      case 8: month = 'AGOSTO'; break
+      case 9: month = 'SEPTIEMBRE'; break
+      case 10: month = 'OCTUBRE'; break
+      case 11: month = 'NOVIEMBRE'; break
+      case 12: month = 'DICIEMBRE'; break
+    }
+    return month
   }
 }

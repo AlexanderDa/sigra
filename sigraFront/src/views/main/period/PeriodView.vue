@@ -45,13 +45,25 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12>
-                <v-text-field v-model="editedItem.startDate" label="Fecha de Inicio" placeholder="2019-04-25" :mask="'####-##-##'"></v-text-field>
+                <!--v-text-field v-model="editedItem.startDate" label="Fecha de Inicio" placeholder="2019-04-25" :mask="'####-##-##'"></v-text-field-->
+                <DateWidget
+                  v-model="editedItem.startDate"
+                  :input="editedItem.startDate"
+                  label="Fecha de Inicio"
+                />
               </v-flex>
               <v-flex xs12>
-                <v-text-field v-model="editedItem.finishDate" label="Fecha de Cierre" placeholder="2019-10-25" :mask="'####-##-##'"></v-text-field>
+                <DateWidget
+                  v-model="editedItem.finishDate"
+                  :input="editedItem.finishDate"
+                  label="Fecha de Cierre"
+                />
               </v-flex>
               <v-flex xs12>
-                <v-text-field v-model="editedItem.fullDate" label="Fecha Completa" placeholder="Marzo 2019 - Octubre 2019"></v-text-field>
+                <v-text-field
+                  v-model="editedItem.fullDate"
+                  label="Fecha Completa"
+                ></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>

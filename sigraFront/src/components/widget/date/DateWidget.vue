@@ -33,11 +33,16 @@ export default class DateWidget extends Vue {
   public created (): void {
     this.date = this.input
   }
+
   @Watch('date')
   public listenerDate (newValue: any): void {
     if (newValue !== null || newValue !== undefined) {
       this.returnDate()
     }
+  }
+  @Watch('input')
+  public onLabelChange (newValue: any, oldValue: any): void {
+    this.date = newValue
   }
 
   public returnDate (): void {
