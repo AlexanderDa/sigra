@@ -22,18 +22,9 @@ export default new Router({
       component: () => import('@/views/main/main//MainView.vue'),
       children: [
         {
-          path: 'faculty',
-          name: 'FacultyPage',
-          component: () => import('@/views/main/faculty/FacultyView.vue')
-        }, {
-          path: 'career',
-          name: 'CareerPage',
-          component: () => import('@/views/main/career/CareerView.vue')
-        },
-        {
-          path: 'period',
-          name: 'PeriodPage',
-          component: () => import('@/views/main/period/PeriodView.vue')
+          path: 'university',
+          name: 'UniversityPage',
+          component: () => import('@/views/main/university/UniversityView.vue')
         },
         {
           path: 'graduate',
