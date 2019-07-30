@@ -65,8 +65,8 @@
 </template>
 
 <script lang="ts">
-import FacultyView from "./FacultyViewComponent";
-export default FacultyView;
+import FacultyView from './FacultyViewComponent'
+export default FacultyView
 </script>
 
 <style lang="sass">

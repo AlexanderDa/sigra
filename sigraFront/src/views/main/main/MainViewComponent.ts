@@ -20,6 +20,7 @@ export default class MainView extends Vue {
   public sideBarItems: Item[] = [
     { icon: 'home', title: 'Principal', routerName: 'MainPage' },
     { icon: 'list', title: 'Graduados', routerName: 'GraduatePage' },
+    { icon: 'list', title: 'Egresados', routerName: 'GraduateCarrerPage' },
     { icon: 'list', title: 'Facultades', routerName: 'FacultyPage' },
     { icon: 'list', title: 'Carreras', routerName: 'CareerPage' },
     { icon: 'list', title: 'Periodo Académico', routerName: 'PeriodPage' }
@@ -30,9 +31,9 @@ export default class MainView extends Vue {
     { icon: 'logout', title: 'Salir', routerName: 'LoginPage' }
   ];
 
-  public created(): void { }
+  public created (): void { }
 
-  public changeView(routerName: string): void {
+  public changeView (routerName: string): void {
     if (routerName === 'LoginPage') {
       localStorage.setItem('isLogged', 'false')
       localStorage.removeItem('userId')

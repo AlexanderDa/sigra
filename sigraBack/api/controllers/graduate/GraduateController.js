@@ -13,6 +13,9 @@ module.exports = {
             res.status = 500;
             res.send({ fetched: false })
         } else {
+            for (i = 0; i < list.length; i++) {
+                list[i].fullName = `${list[i].lastName} ${list[i].firstName}`
+            }
             res.send(list);
         }
     },

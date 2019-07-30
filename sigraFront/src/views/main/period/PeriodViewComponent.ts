@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import PeriodService from '@/service/PeriodService';
+import PeriodService from '@/service/PeriodService'
 import swal from 'sweetalert'
 
 @Component({ name: 'PeriodView' })
 export default class PeriodView extends Vue {
   public dialog: boolean = false;
   public search: string = '';
-  
+
   public headers: any[] = [
     { text: 'Fecha de Inicio', align: 'left', value: 'startDate' },
     { text: 'Fecha de Cierre', align: 'left', value: 'finishDate' },
@@ -19,21 +19,21 @@ export default class PeriodView extends Vue {
   public editedItem: any = {
     startDate: '',
     finishDate: '',
-    fullDate: '',
+    fullDate: ''
   }
   public defaultItem: any = {
     startDate: '',
     finishDate: '',
-    fullDate: '',
+    fullDate: ''
   }
-  public created(): void {
-    this.initialize();
+  public created (): void {
+    this.initialize()
   }
 
   // Methods
 
-  public initialize(): void {
-    const service: PeriodService = new PeriodService();
+  public initialize (): void {
+    const service: PeriodService = new PeriodService()
     service.getAll()
       .then((res: any) => {
         this.desserts = res.data
@@ -41,27 +41,26 @@ export default class PeriodView extends Vue {
       .catch((err: any) => {
         console.log(err)
       })
-
   }
-  public editItem(item: any): void {
+  public editItem (item: any): void {
     this.editedIndex = this.desserts.indexOf(item)
     this.editedItem = Object.assign({}, item)
     this.dialog = true
   }
 
-  public deleteItem(item: any): void {
+  public deleteItem (item: any): void {
     const index = this.desserts.indexOf(item)
     const swalConf: any = {
-      title: "¿Estás seguro?",
-      text: "Una vez eliminado, no podrá recuperar este registro!",
-      icon: "warning",
+      title: '¿Estás seguro?',
+      text: 'Una vez eliminado, no podrá recuperar este registro!',
+      icon: 'warning',
       buttons: true,
-      dangerMode: true,
+      dangerMode: true
     }
     swal(swalConf)
       .then((willDelete) => {
         if (willDelete) {
-          const service: PeriodService = new PeriodService();
+          const service: PeriodService = new PeriodService()
           service.remove(item.id)
             .then((res: any) => {
               if (res.data.deleted === true) {
@@ -69,10 +68,10 @@ export default class PeriodView extends Vue {
               }
             })
         }
-      });
+      })
   }
 
-  public close(): void {
+  public close (): void {
     this.dialog = false
     setTimeout(() => {
       this.editedItem = Object.assign({}, this.defaultItem)
@@ -80,7 +79,7 @@ export default class PeriodView extends Vue {
     }, 300)
   }
 
-  public save(): void {
+  public save (): void {
     const service: PeriodService = new PeriodService()
     if (this.editedIndex > -1) {
       service.put(this.editedItem.id, this.editedItem)
@@ -104,8 +103,7 @@ export default class PeriodView extends Vue {
   }
 
   // Computed
-  public get formTitle(): string {
+  public get formTitle (): string {
     return this.editedIndex === -1 ? 'Nuevo' : 'Editar'
   }
-
 }

@@ -68,8 +68,8 @@
 </template>
 
 <script lang="ts">
-import PeriodView from "./PeriodViewComponent";
-export default PeriodView;
+import PeriodView from './PeriodViewComponent'
+export default PeriodView
 </script>
 
 <style lang="sass">

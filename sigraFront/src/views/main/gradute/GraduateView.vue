@@ -83,8 +83,8 @@
 </template>
 
 <script lang="ts">
-import GraduateView from "./GraduateViewComponent";
-export default GraduateView;
+import GraduateView from './GraduateViewComponent'
+export default GraduateView
 </script>
 
 <style lang="sass">

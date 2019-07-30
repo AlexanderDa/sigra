@@ -1,7 +1,7 @@
 export default class Service {
   public url: string;
   public headers: any;
-  constructor() {
+  constructor () {
     this.url = process.env.NODE_ENV === 'development'
       ? `http://localhost:1337/api/v1`
       : `/api/v1`

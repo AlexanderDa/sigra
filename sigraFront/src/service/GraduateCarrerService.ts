@@ -1,17 +1,17 @@
 import Service from '@/service/Service'
 import Axios from 'axios'
 
-export default class FacultyService extends Service {
+export default class GraduateCarrerService extends Service {
   public getAll () {
     return Axios.get(
-      `${this.url}/faculty`,
+      `${this.url}/gradute/career`,
       { headers: this.headers }
     )
   }
 
   public post (body: any) {
     return Axios.post(
-      `${this.url}/faculty`,
+      `${this.url}/gradute/career`,
       body,
       { headers: this.headers }
     )
@@ -19,7 +19,7 @@ export default class FacultyService extends Service {
 
   public put (id: number, body: any) {
     return Axios.put(
-      `${this.url}/faculty/${id}`,
+      `${this.url}/gradute/career/${id}`,
       body,
       { headers: this.headers }
     )
@@ -27,7 +27,7 @@ export default class FacultyService extends Service {
 
   public remove (id: number) {
     return Axios.delete(
-      `${this.url}/faculty/${id}`,
+      `${this.url}/gradute/career/${id}`,
       { headers: this.headers }
     )
   }

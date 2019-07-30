@@ -65,8 +65,8 @@
 </template>
 
 <script lang="ts">
-import CareerView from "./CareerViewComponent";
-export default CareerView;
+import CareerView from './CareerViewComponent'
+export default CareerView
 </script>
 
 <style lang="sass">

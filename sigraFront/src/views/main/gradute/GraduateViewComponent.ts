@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import GraduateService from '@/service/GraduateService';
+import GraduateService from '@/service/GraduateService'
 import swal from 'sweetalert'
 
 @Component({ name: 'GraduateView' })
@@ -19,14 +19,14 @@ export default class GraduateView extends Vue {
   public editedIndex: number = -1
   public editedItem: any = {}
   public defaultItem: any = {}
-  public created(): void {
-    this.initialize();
+  public created (): void {
+    this.initialize()
   }
 
   // Methods
 
-  public initialize(): void {
-    const service: GraduateService = new GraduateService();
+  public initialize (): void {
+    const service: GraduateService = new GraduateService()
     service.getAll()
       .then((res: any) => {
         this.desserts = res.data
@@ -34,27 +34,26 @@ export default class GraduateView extends Vue {
       .catch((err: any) => {
         console.log(err)
       })
-
   }
-  public editItem(item: any): void {
+  public editItem (item: any): void {
     this.editedIndex = this.desserts.indexOf(item)
     this.editedItem = Object.assign({}, item)
     this.dialog = true
   }
 
-  public deleteItem(item: any): void {
+  public deleteItem (item: any): void {
     const index = this.desserts.indexOf(item)
     const swalConf: any = {
-      title: "¿Estás seguro?",
-      text: "Una vez eliminado, no podrá recuperar este registro!",
-      icon: "warning",
+      title: '¿Estás seguro?',
+      text: 'Una vez eliminado, no podrá recuperar este registro!',
+      icon: 'warning',
       buttons: true,
-      dangerMode: true,
+      dangerMode: true
     }
     swal(swalConf)
       .then((willDelete) => {
         if (willDelete) {
-          const service: GraduateService = new GraduateService();
+          const service: GraduateService = new GraduateService()
           service.remove(item.id)
             .then((res: any) => {
               if (res.data.deleted === true) {
@@ -62,10 +61,10 @@ export default class GraduateView extends Vue {
               }
             })
         }
-      });
+      })
   }
 
-  public close(): void {
+  public close (): void {
     this.dialog = false
     setTimeout(() => {
       this.editedItem = Object.assign({}, this.defaultItem)
@@ -73,7 +72,7 @@ export default class GraduateView extends Vue {
     }, 300)
   }
 
-  public save(): void {
+  public save (): void {
     const service: GraduateService = new GraduateService()
     if (this.editedIndex > -1) {
       service.put(this.editedItem.id, this.editedItem)
@@ -96,8 +95,7 @@ export default class GraduateView extends Vue {
   }
 
   // Computed
-  public get formTitle(): string {
+  public get formTitle (): string {
     return this.editedIndex === -1 ? 'Nuevo' : 'Editar'
   }
-
 }

@@ -8,7 +8,7 @@ export default class LoginView extends Vue {
   public username: string = '';
   public password: string = '';
 
-  public login(): void {
+  public login (): void {
     const auth: UserService = new UserService()
     auth.login(this.username, this.password, true)
       .then(async (res: any) => {

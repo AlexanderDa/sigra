@@ -24,21 +24,26 @@ export default new Router({
         {
           path: 'faculty',
           name: 'FacultyPage',
-          component: () => import('@/views/main/faculty/FacultyView.vue'),
+          component: () => import('@/views/main/faculty/FacultyView.vue')
         }, {
           path: 'career',
           name: 'CareerPage',
-          component: () => import('@/views/main/career/CareerView.vue'),
+          component: () => import('@/views/main/career/CareerView.vue')
         },
         {
           path: 'period',
           name: 'PeriodPage',
-          component: () => import('@/views/main/period/PeriodView.vue'),
+          component: () => import('@/views/main/period/PeriodView.vue')
         },
         {
           path: 'graduate',
           name: 'GraduatePage',
-          component: () => import('@/views/main/gradute/GraduateView.vue'),
+          component: () => import('@/views/main/gradute/GraduateView.vue')
+        },
+        {
+          path: 'graduared',
+          name: 'GraduateCarrerPage',
+          component: () => import('@/views/main/graduated/GraduateCarrerView.vue')
         }
       ]
     }
