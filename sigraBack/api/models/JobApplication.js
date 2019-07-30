@@ -11,12 +11,12 @@ module.exports = {
     vinculationDate: {
       type: 'ref',
       columnType: 'date',
-      columnName:'vinculation_date'
+      columnName: 'vinculation_date'
     },
     unlinkDate: {
       type: 'ref',
       columnType: 'date',
-      columnName:'unlink_date'
+      columnName: 'unlink_date'
     },
 
 
@@ -28,7 +28,12 @@ module.exports = {
     company: {
       model: 'company',
       required: true,
-    }
+    },
+
+    area: {
+      model: 'area',
+      required: true
+    },
 
 
 

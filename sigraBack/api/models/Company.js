@@ -50,10 +50,6 @@ module.exports = {
       columnName: 'is_private'
     },
 
-    area: {
-      model: 'area',
-      required: true
-    },
   },
 
   recruit: {//recluta

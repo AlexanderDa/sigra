@@ -2,8 +2,7 @@
 alter table audit 
 add constraint fk_audit_user foreign key(userid) references dbuser(id);
 
-alter table company
-add constraint fk_company_area foreign key(area) references area(id);
+
 
 alter table jobapplication
 add constraint fk_jobapplication_graduate foreign key(graduate) references graduate(id);
@@ -11,6 +10,8 @@ add constraint fk_jobapplication_graduate foreign key(graduate) references gradu
 alter table jobapplication
 add constraint fk_jobapplication_company foreign key(company) references company(id);
 
+alter table jobapplication
+add constraint fk_jobapplication_area foreign key(area) references area(id);
 
 
 
