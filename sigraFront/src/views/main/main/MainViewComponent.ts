@@ -19,9 +19,9 @@ export default class MainView extends Vue {
   public drawer: boolean = true;
   public sideBarItems: Item[] = [
     { icon: 'home', title: 'Principal', routerName: 'MainPage' },
-    { icon: 'list', title: 'Universidad', routerName: 'UniversityPage' },
-    { icon: 'list', title: 'Graduados', routerName: 'GraduatePage' },
-    { icon: 'list', title: 'Egresados', routerName: 'GraduateCarrerPage' }
+    { icon: 'school', title: 'Universidad', routerName: 'UniversityPage' },
+    { icon: 'person', title: 'Graduados', routerName: 'GraduatePage' },
+    { icon: 'how_to_reg', title: 'Egresados', routerName: 'GraduateCarrerPage' }
 
   ];
 

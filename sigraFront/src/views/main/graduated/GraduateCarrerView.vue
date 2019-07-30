@@ -141,8 +141,8 @@
 </template>
 
 <script lang="ts">
-import GraduateCarrerView from "./GraduateCarrerViewComponent";
-export default GraduateCarrerView;
+import GraduateCarrerView from './GraduateCarrerViewComponent'
+export default GraduateCarrerView
 </script>
 
 <style lang="sass">
