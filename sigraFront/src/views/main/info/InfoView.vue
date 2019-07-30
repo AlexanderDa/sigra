@@ -53,8 +53,8 @@
 </template>
 
 <script lang="ts">
-import InfoView from "./InfoViewComponent";
-export default InfoView;
+import InfoView from './InfoViewComponent'
+export default InfoView
 </script>
 
 <style lang="sass">

@@ -88,7 +88,7 @@ export default class GraduateReportWidget extends Vue {
         { text: 'Senescyt', style: 'thead' }
       ]
     ]
-    this.graduates.forEach(graduate => {
+    this.graduates.forEach((graduate: any) => {
       if (graduate.faculty.id === faculty.id) {
         body.push([
           graduate.graduated.fullName,
@@ -121,7 +121,7 @@ export default class GraduateReportWidget extends Vue {
         { text: 'Senescyt', style: 'thead' }
       ]
     ]
-    this.graduates.forEach(graduate => {
+    this.graduates.forEach((graduate: any) => {
       if (graduate.career.id === career.id) {
         body.push([
           graduate.graduated.fullName,

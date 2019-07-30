@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-
 @Component({ name: 'InfoPage' })
 export default class InfoView extends Vue {
   public authors: any = [
@@ -29,6 +28,6 @@ export default class InfoView extends Vue {
       lastName: 'Vera Correa',
       firstName: 'Jairo Alexander',
       image: ''
-    },
+    }
   ]
 }
