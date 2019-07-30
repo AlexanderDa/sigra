@@ -36,13 +36,13 @@ export default class GraduateCarrerView extends Vue {
   public editedIndex: number = -1
   public editedItem: any = {}
   public defaultItem: any = {}
-  public created (): void {
+  public created(): void {
     this.initialize()
   }
 
   // Methods
 
-  public async initialize () {
+  public async initialize() {
     this.desserts = await new GraduateCarrerService().getAll().then((res: any) => res.data)
     this.graduates = await new GraduateService().getAll().then((res: any) => res.data)
     this.faculties = await new FacultyService().getAll().then((res: any) => res.data)
@@ -50,13 +50,13 @@ export default class GraduateCarrerView extends Vue {
     this.periods = await new PeriodService().getAll().then((res: any) => res.data)
   }
 
-  public editItem (item: any): void {
+  public editItem(item: any): void {
     this.editedIndex = this.desserts.indexOf(item)
     this.editedItem = Object.assign({}, item)
     this.dialog = true
   }
 
-  public deleteItem (item: any): void {
+  public deleteItem(item: any): void {
     const index = this.desserts.indexOf(item)
     const swalConf: any = {
       title: '¿Estás seguro?',
@@ -79,7 +79,7 @@ export default class GraduateCarrerView extends Vue {
       })
   }
 
-  public close (): void {
+  public close(): void {
     this.dialog = false
     setTimeout(() => {
       this.editedItem = Object.assign({}, this.defaultItem)
@@ -87,12 +87,13 @@ export default class GraduateCarrerView extends Vue {
     }, 300)
   }
 
-  public save (): void {
+  public save(): void {
     if (this.editedItem.graduated !== undefined) { this.editedItem.graduated = this.editedItem.graduated.id }
     if (this.editedItem.academicPeriod !== undefined) { this.editedItem.academicPeriod = this.editedItem.academicPeriod.id }
     if (this.editedItem.faculty !== undefined) { this.editedItem.faculty = this.editedItem.faculty.id }
     if (this.editedItem.career !== undefined) { this.editedItem.career = this.editedItem.career.id }
 
+    this.editedItem.gradeScore = Number(this.editedItem.gradeScore)
     const service: GraduateCarrerService = new GraduateCarrerService()
     if (this.editedIndex > -1) {
       service.put(this.editedItem.id, this.editedItem)
@@ -103,6 +104,7 @@ export default class GraduateCarrerView extends Vue {
           console.log(err)
         })
     } else {
+      console.log(this.editedItem)
       service.post(this.editedItem)
         .then((res: any) => {
           this.initialize()
@@ -115,7 +117,7 @@ export default class GraduateCarrerView extends Vue {
   }
 
   // Computed
-  public get formTitle (): string {
+  public get formTitle(): string {
     return this.editedIndex === -1 ? 'Nuevo' : 'Editar'
   }
 }

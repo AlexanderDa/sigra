@@ -36,7 +36,6 @@ module.exports = {
 
     senescytRecord: {
       type: 'string',
-      unique: true,
       columnName: 'senecyt_record',
       columnType: 'character varying(25)',
       maxLength: 25,
