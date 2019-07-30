@@ -25,7 +25,7 @@ export default new Router({
           path: 'faculty',
           name: 'FacultyPage',
           component: () => import('@/views/main/faculty/FacultyView.vue'),
-        },{
+        }, {
           path: 'career',
           name: 'CareerPage',
           component: () => import('@/views/main/career/CareerView.vue'),
@@ -34,6 +34,11 @@ export default new Router({
           path: 'period',
           name: 'PeriodPage',
           component: () => import('@/views/main/period/PeriodView.vue'),
+        },
+        {
+          path: 'graduate',
+          name: 'GraduatePage',
+          component: () => import('@/views/main/gradute/GraduateView.vue'),
         }
       ]
     }
