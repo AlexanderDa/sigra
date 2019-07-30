@@ -17,6 +17,11 @@ export default new Router({
       component: () => import('@/views/login/LoginView.vue')
     },
     {
+      path: '/info',
+      name: 'InfoPage',
+      component: () => import('@/views/main/info/InfoView.vue')
+    },
+    {
       path: '/main',
       name: 'MainPage',
       component: () => import('@/views/main/main//MainView.vue'),
