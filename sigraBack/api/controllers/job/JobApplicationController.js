@@ -8,11 +8,16 @@
 module.exports = {
 
     getAll: async function (req, res) {
-        let list = await JobApplication.find();
+        let list = await JobApplication.find().populate('graduate').populate('company').populate('area');
         if (!list) {
             res.status = 500;
             res.send({ fetched: false })
         } else {
+            for (i = 0; i < list.length; i++) {
+                list[i].graduate.fullName = `${list[i].graduate.lastName} ${list[i].graduate.firstName}`
+                list[i].vinculationDate = formatDate(list[i].vinculationDate)
+                list[i].unlinkDate = formatDate(list[i].unlinkDate)
+            }
             res.send(list);
         }
     },
@@ -64,4 +69,13 @@ async function audit(user, action, description) {
         description,
         user
     }).fetch();
+}
+
+
+function formatNumber(number) {
+    return (number >= 0 && number < 10) ? `0${number}` : `${number}`
+}
+function formatDate(date) {
+    date = new Date(date)
+    return `${date.getFullYear()}-${formatNumber(date.getMonth() + 1)}-${formatNumber(date.getDate())}`
 }

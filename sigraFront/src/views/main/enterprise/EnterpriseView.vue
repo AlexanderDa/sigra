@@ -14,7 +14,9 @@
       <v-tab-item value="tab-1">
         <Company />
       </v-tab-item>
-      <v-tab-item value="tab-2"></v-tab-item>
+      <v-tab-item value="tab-2">
+        <JobApp/>
+      </v-tab-item>
       <v-tab-item value="tab-3">
         <Area />
       </v-tab-item>
