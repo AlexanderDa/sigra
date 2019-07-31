@@ -7,15 +7,20 @@ import UserService from '@/service/UserService'
 export default class LoginView extends Vue {
   public username: string = '';
   public password: string = '';
+  public error: boolean = false;
+  public loading: boolean = false
 
-  public login (): void {
+  public async login () {
     const auth: UserService = new UserService()
-    auth.login(this.username, this.password, true)
+    this.loading = true
+    this.error = false
+    await auth.login(this.username, this.password, true)
       .then(async (res: any) => {
         await localStorage.setItem('isLogged', 'true')
         await localStorage.setItem('userId', JSON.stringify(res.data.id))
         this.$router.push({ name: 'MainPage' })
       })
-      .catch((err: any) => console.log(err))
+      .catch(() => { this.error = true })
+      .finally(() => { this.loading = false })
   }
 }

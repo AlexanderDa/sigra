@@ -30,7 +30,20 @@
                   ></v-text-field>
                 </v-card-text>
                 <v-card-actions>
-                  <v-btn block color="primary white--text" type="submit">entrar</v-btn>
+                  <v-alert
+                    v-model="error"
+                    style="min-width:100%;"
+                    type="error"
+                  >Usuario o contraseña incorrectos.</v-alert>
+                </v-card-actions>
+                <v-card-actions>
+                  <v-btn
+                    block
+                    color="primary white--text"
+                    :loading="loading"
+                    :disabled="loading"
+                    type="submit"
+                  >entrar</v-btn>
                 </v-card-actions>
               </form>
             </v-card>
