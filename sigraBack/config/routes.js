@@ -30,7 +30,7 @@ module.exports.routes = {
 
 
 
-  'GET        /api/v1/facult y':'faculty/FacultyController.getAll',
+  'GET        /api/v1/faculty':'faculty/FacultyController.getAll',
   'POST       /api/v1/faculty': { controller: 'faculty/FacultyController', action: 'createNewFaculty' },
   'PUT        /api/v1/faculty/:id': { controller: 'faculty/FacultyController', action: 'updateOneFaculty' },
   'DELETE     /api/v1/faculty/:id': { controller: 'faculty/FacultyController', action: 'deleteOneFaculty' },

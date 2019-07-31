@@ -105,8 +105,8 @@ export default class GraduateReportWidget extends Vue {
       await pdfmake.createPdf(this.getDefinition(faculty.name, body)).open()
     } else {
       swal(
-        'Algo salio mal',
-        'No exixten registros para crear el pdf!',
+        'Algo salió mal',
+        'No existen registros para crear el pdf!',
         'warning'
       )
     }
@@ -138,8 +138,8 @@ export default class GraduateReportWidget extends Vue {
       await pdfmake.createPdf(this.getDefinition(career.name, body)).open()
     } else {
       swal(
-        'Algo salio mal',
-        'No exixten registros para crear el pdf!',
+        'Algo salió mal',
+        'No existen registros para crear el pdf!',
         'warning'
       )
     }
