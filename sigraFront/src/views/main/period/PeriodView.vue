@@ -22,6 +22,9 @@
             hide-details
           ></v-text-field>
           <v-spacer></v-spacer>
+          <v-btn color="primary" dark icon @click="initialize()">
+            <v-icon>refresh</v-icon>
+          </v-btn>
           <v-btn color="primary" dark icon @click="dialog=!dialog">
             <v-icon>add</v-icon>
           </v-btn>
@@ -45,7 +48,6 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12>
-                <!--v-text-field v-model="editedItem.startDate" label="Fecha de Inicio" placeholder="2019-04-25" :mask="'####-##-##'"></v-text-field-->
                 <DateWidget
                   v-model="editedItem.startDate"
                   :input="editedItem.startDate"
@@ -60,10 +62,7 @@
                 />
               </v-flex>
               <v-flex xs12>
-                <v-text-field
-                  v-model="editedItem.fullDate"
-                  label="Fecha Completa"
-                ></v-text-field>
+                <v-text-field v-model="editedItem.fullDate" label="Fecha Completa"></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>

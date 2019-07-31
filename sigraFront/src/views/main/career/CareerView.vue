@@ -22,6 +22,9 @@
             hide-details
           ></v-text-field>
           <v-spacer></v-spacer>
+          <v-btn color="primary" dark icon @click="initialize()">
+            <v-icon>refresh</v-icon>
+          </v-btn>
           <v-btn color="primary" dark icon @click="dialog=!dialog">
             <v-icon>add</v-icon>
           </v-btn>
