@@ -1,24 +1,24 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import AreaService from '@/service/AreaService'
+import CompanyService from '@/service/CompanyService'
 import swal from 'sweetalert'
 
-@Component({ name: 'AreaView' })
-export default class AreaView extends Vue {
+@Component({ name: 'CompanyView' })
+export default class CompanyView extends Vue {
   public dialog: boolean = false;
   public search: string = '';
   public headers: any[] = [
     { text: 'Nombre', align: 'left', value: 'name' },
+    { text: 'Dirección', align: 'left', value: 'address' },
+    { text: 'Teléfono', align: 'left', value: 'telephone' },
+    { text: 'Correo Electronico', align: 'left', value: 'email' },
+    { text: 'Contacto', align: 'left', value: 'contact' },
     { text: 'Actions', value: 'action', sortable: false }
   ]
   public desserts: any = []
   public editedIndex: number = -1
-  public editedItem: any = {
-    name: ''
-  }
-  public defaultItem: any = {
-    name: ''
-  }
+  public editedItem: any = {}
+  public defaultItem: any = {}
   public created (): void {
     this.initialize()
   }
@@ -26,7 +26,7 @@ export default class AreaView extends Vue {
   // Methods
 
   public initialize (): void {
-    const service: AreaService = new AreaService()
+    const service: CompanyService = new CompanyService()
     this.$store.commit('loaderStart')
     service.getAll()
       .then((res: any) => {
@@ -55,7 +55,7 @@ export default class AreaView extends Vue {
     swal(swalConf)
       .then((willDelete) => {
         if (willDelete) {
-          const service: AreaService = new AreaService()
+          const service: CompanyService = new CompanyService()
           service.remove(item.id)
             .then((res: any) => {
               if (res.data.deleted === true) {
@@ -75,11 +75,11 @@ export default class AreaView extends Vue {
   }
 
   public save (): void {
-    const service: AreaService = new AreaService()
+    const service: CompanyService = new CompanyService()
     if (this.editedIndex > -1) {
       service.put(this.editedItem.id, this.editedItem)
         .then((res: any) => {
-          Object.assign(this.desserts[this.editedIndex], res.data.updatedArea)
+          Object.assign(this.desserts[this.editedIndex], res.data.updatedCompany)
         })
         .catch((err: any) => {
           console.log(err)
@@ -87,7 +87,7 @@ export default class AreaView extends Vue {
     } else {
       service.post(this.editedItem)
         .then((res: any) => {
-          this.desserts.push(res.data.newArea)
+          this.desserts.push(res.data.newCompany)
         })
         .catch((err: any) => {
           console.log(err)

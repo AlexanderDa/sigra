@@ -12,21 +12,19 @@
 
     <v-tabs-items v-model="tab">
       <v-tab-item value="tab-1">
-        
+        <Company />
       </v-tab-item>
-      <v-tab-item value="tab-2">
-        
-      </v-tab-item>
+      <v-tab-item value="tab-2"></v-tab-item>
       <v-tab-item value="tab-3">
-        <Area/>
+        <Area />
       </v-tab-item>
     </v-tabs-items>
   </div>
 </template>
 
 <script lang="ts">
-import EnterpriseView from "./EnterpriseViewComponent";
-export default EnterpriseView;
+import EnterpriseView from './EnterpriseViewComponent'
+export default EnterpriseView
 </script>
 
 <style lang="sass">

@@ -10,7 +10,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat color="white">
-          <v-toolbar-title>AREA</v-toolbar-title>
+          <v-toolbar-title>EMPRESA</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
           <v-spacer></v-spacer>
           <v-text-field
@@ -35,7 +35,7 @@
         <v-btn color="primary" @click="initialize">Reset</v-btn>
       </template>
     </v-data-table>
-    <v-dialog v-model="dialog" max-width="500px">
+    <v-dialog v-model="dialog" max-width="800px">
       <v-card>
         <v-card-title>
           <span class="headline">{{ formTitle }}</span>
@@ -44,8 +44,24 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
+              <v-flex xs12 sm8>
+                <v-text-field v-model.trim="editedItem.name" label="Nombre"></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm4>
+                <v-text-field v-model.trim="editedItem.smallName" label="Nombre corto"></v-text-field>
+              </v-flex>
+              <v-flex xs8>
+                <v-text-field v-model.trim="editedItem.email" label="Correo Electrónico"></v-text-field>
+              </v-flex>
+              <v-flex xs4>
+                <v-text-field v-model.trim="editedItem.telephone" label="Teléfono"></v-text-field>
+              </v-flex>
               <v-flex xs12>
-                <v-text-field v-model="editedItem.name" label="Nombre"></v-text-field>
+                <v-text-field v-model.trim="editedItem.address" label="Dirección"></v-text-field>
+              </v-flex>
+
+              <v-flex xs12>
+                <v-text-field v-model.trim="editedItem.contact" label="Contacto"></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
@@ -62,10 +78,10 @@
 </template>
 
 <script lang="ts">
-import AreaView from './AreaViewComponent'
-export default AreaView
+import CompanyView from './CompanyViewComponent'
+export default CompanyView
 </script>
 
 <style lang="sass">
-    @import "./AreaView.sass";
+    @import "./CompanyView.sass";
 </style>

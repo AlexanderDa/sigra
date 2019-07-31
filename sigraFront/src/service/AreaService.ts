@@ -2,15 +2,14 @@ import Service from '@/service/Service'
 import Axios from 'axios'
 
 export default class AreaService extends Service {
-
-  public getAll() {
+  public getAll () {
     return Axios.get(
       `${this.url}/area`,
       { headers: this.headers }
     )
   }
 
-  public post(body: any) {
+  public post (body: any) {
     return Axios.post(
       `${this.url}/area`,
       body,
@@ -18,7 +17,7 @@ export default class AreaService extends Service {
     )
   }
 
-  public put(id: number, body: any) {
+  public put (id: number, body: any) {
     return Axios.put(
       `${this.url}/area/${id}`,
       body,
@@ -26,7 +25,7 @@ export default class AreaService extends Service {
     )
   }
 
-  public remove(id: number) {
+  public remove (id: number) {
     return Axios.delete(
       `${this.url}/area/${id}`,
       { headers: this.headers }

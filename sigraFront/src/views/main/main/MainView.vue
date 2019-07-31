@@ -60,8 +60,8 @@
 </template>
 
 <script lang="ts">
-import MainView from "./MainViewComponent";
-export default MainView;
+import MainView from './MainViewComponent'
+export default MainView
 </script>
 
 <style lang="sass">

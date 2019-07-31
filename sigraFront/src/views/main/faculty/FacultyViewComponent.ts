@@ -22,13 +22,13 @@ export default class FacultyView extends Vue {
     name: '',
     smallName: ''
   }
-  public created(): void {
+  public created (): void {
     this.initialize()
   }
 
   // Methods
 
-  public initialize(): void {
+  public initialize (): void {
     this.$store.commit('loaderStart')
     const service: FacultyService = new FacultyService()
     service.getAll()
@@ -40,13 +40,13 @@ export default class FacultyView extends Vue {
       })
       .finally(() => { this.$store.commit('loaderFinish') })
   }
-  public editItem(item: any): void {
+  public editItem (item: any): void {
     this.editedIndex = this.desserts.indexOf(item)
     this.editedItem = Object.assign({}, item)
     this.dialog = true
   }
 
-  public deleteItem(item: any): void {
+  public deleteItem (item: any): void {
     const index = this.desserts.indexOf(item)
     const swalConf: any = {
       title: '¿Estás seguro?',
@@ -69,7 +69,7 @@ export default class FacultyView extends Vue {
       })
   }
 
-  public close(): void {
+  public close (): void {
     this.dialog = false
     setTimeout(() => {
       this.editedItem = Object.assign({}, this.defaultItem)
@@ -77,7 +77,7 @@ export default class FacultyView extends Vue {
     }, 300)
   }
 
-  public save(): void {
+  public save (): void {
     const service: FacultyService = new FacultyService()
     if (this.editedIndex > -1) {
       service.put(this.editedItem.id, this.editedItem)
@@ -100,7 +100,7 @@ export default class FacultyView extends Vue {
   }
 
   // Computed
-  public get formTitle(): string {
+  public get formTitle (): string {
     return this.editedIndex === -1 ? 'Nuevo' : 'Editar'
   }
 }
