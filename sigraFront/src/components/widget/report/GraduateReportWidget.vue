@@ -102,7 +102,7 @@ export default class GraduateReportWidget extends Vue {
 
     this.dialogFaculty = false
     if (body.length > 1) {
-      await pdfmake.createPdf(this.getDefinition(faculty.name, body)).open()
+      await pdfmake.createPdf(this.getDefinition(faculty.name, body)).download()
     } else {
       swal(
         'Algo salió mal',
@@ -135,7 +135,7 @@ export default class GraduateReportWidget extends Vue {
 
     this.dialogCareer = false
     if (body.length > 1) {
-      await pdfmake.createPdf(this.getDefinition(career.name, body)).open()
+      await pdfmake.createPdf(this.getDefinition(career.name, body)).download()
     } else {
       swal(
         'Algo salió mal',

@@ -38,6 +38,6 @@
   "author": "alexander",
   "license": "",
   "engines": {
-    "node": "^10.16"
+    "node": ">=10.16"
   }
 }

@@ -14,7 +14,7 @@ module.exports.routes = {
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   //'GET /':  'PagesController.main' ,
-  'GET /': { view: 'index', locals: { layout: false } },
+  //'GET /': { view: 'index', locals: { layout: false } },
 
 
 
